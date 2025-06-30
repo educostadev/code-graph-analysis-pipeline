@@ -369,9 +369,64 @@ Here is an example on how to use [executeJupyterNotebook.sh](./scripts/executeJu
 ./scripts/executeJupyterNotebook.sh ./jupyter/Wordcloud.ipynb
 ```
 
-### Manually setup the environment using Conda
+### Setup the environment using Python Virtual Environment (.venv)
 
-[Conda](https://conda.io) provides package, dependency, and environment management for any language. Here, it is used to setup the environment for Juypter Notebooks.
+This project now uses Python's built-in virtual environment instead of Conda. This approach is more lightweight and doesn't require installing additional package managers.
+
+- **Automated Setup (Recommended)**
+
+  Use the provided setup scripts:
+
+  **Linux/Mac:**
+  ```shell
+  ./scripts/setupPythonEnvironment.sh
+  ```
+
+  **Windows PowerShell:**
+  ```powershell
+  .\scripts\setupPythonEnvironment.ps1
+  ```
+
+  **Reset environment (if needed):**
+  ```shell
+  ./scripts/setupPythonEnvironment.sh --reset
+  ```
+
+- **Manual Setup**
+
+  ```shell
+  # Create virtual environment
+  python -m venv .venv
+  
+  # Activate virtual environment
+  # Linux/Mac:
+  source .venv/bin/activate
+  # Windows:
+  .venv\Scripts\activate
+  
+  # Install requirements
+  pip install -r requirements.txt
+  ```
+
+- **Activation**
+
+  The environment is automatically activated by the execution scripts. For manual activation:
+
+  **Linux/Mac:**
+  ```shell
+  source .venv/bin/activate
+  ```
+
+  **Windows:**
+  ```cmd
+  .venv\Scripts\activate
+  ```
+
+### Legacy: Manually setup the environment using Conda
+
+> **Note**: This project has been migrated from Conda to Python venv. The following information is kept for reference only.
+
+[Conda](https://conda.io) provides package, dependency, and environment management for any language. Here, it was previously used to setup the environment for Jupyter Notebooks.
 
 - Setup environment
 

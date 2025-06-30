@@ -1,0 +1,24 @@
+# Python requirements for Code Graph Analysis Pipeline
+# This file replaces the conda environment.yml for use with Python venv
+
+# Core Python packages
+jupyter==1.1.*
+matplotlib==3.10.*
+nbconvert==7.16.*
+numpy==1.26.*
+pandas==2.2.*
+setuptools==75.8.*
+typing-extensions==4.12.*
+
+# Visualization and analysis packages
+opentsne==1.0.*
+wordcloud==1.9.*
+monotonic==1.*
+plotly==6.0.*
+kaleido==0.2.*
+
+# Neo4j driver
+neo4j==5.23.*
+
+# Additional dependencies that may be needed
+pip>=25.0

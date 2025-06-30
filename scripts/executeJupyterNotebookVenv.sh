@@ -11,11 +11,11 @@
 #       Otherwise the executed jupyter notebook file would override the original version.
 #       The original ones are typically saved with all outputs cleared to be able to better compare their changes with git diff.
 
-# Note: This script now uses Python virtual environment (.venv) instead of conda.
+# Note: This script uses Python virtual environment (.venv) instead of conda.
 #       If the environment hadn't been created yet it will use "requirements.txt" 
 #       in the project root to create and setup the environment.
 
-# Requires juypter nbconvert,operatingSystemFunctions.sh
+# Requires jupyter nbconvert, operatingSystemFunctions.sh
 
 # Fail on any error ("-e" = exit on first error, "-o pipefail" exist on errors within piped commands)
 set -o errexit -o pipefail
@@ -35,7 +35,7 @@ if [ -z "${NEO4J_INITIAL_PASSWORD}" ]; then
     exit 1
 fi
 
-# Read the first input argument containing the name of the cypher file
+# Read the first input argument containing the name of the jupyter notebook file
 if [ "$#" -ne 1 ]; then
   echo "executeJupyterNotebook: Usage: $0 <jupyter notebook file>" >&2
   exit 1
@@ -51,7 +51,7 @@ fi
 jupyter_notebook_file=$1
 echo "executeJupyterNotebook: jupyter_notebook_file=$jupyter_notebook_file"
 
-# Get ouput file name
+# Get output file name
 JUPYTER_OUTPUT_FILE_POSTFIX=${JUPYTER_OUTPUT_FILE_POSTFIX:-""} # e.g. "" (no postfix), ".nbconvert" or ".output"
 echo "executeJupyterNotebook: JUPYTER_OUTPUT_FILE_POSTFIX=$JUPYTER_OUTPUT_FILE_POSTFIX"
 
@@ -78,7 +78,7 @@ jupyter_notebook_markdown_file="./${jupyter_notebook_file_name}${JUPYTER_OUTPUT_
 echo "executeJupyterNotebook: jupyter_notebook_markdown_file=$jupyter_notebook_markdown_file"
 
 if [ ! -f "${jupyter_notebook_file_path}/.env" ] ; then
-    echo "executeJupyterNotebook: Creating file ${jupyter_notebook_file_path}.env ..."
+    echo "executeJupyterNotebook: Creating file ${jupyter_notebook_file_path}/.env ..."
     echo "NEO4J_INITIAL_PASSWORD=${NEO4J_INITIAL_PASSWORD}" > "${jupyter_notebook_file_path}/.env"
 fi
 
@@ -98,6 +98,7 @@ NBCONVERT_PATH="$(pwd)/${jupyter_notebook_file_name}_files" jupyter nbconvert --
                   --output "$jupyter_notebook_output_file_name" \
                   --output-dir="./" \
                   --ExecutePreprocessor.timeout=480
+
 echo "executeJupyterNotebook: Successfully executed Jupyter Notebook ${jupyter_notebook_output_file_name}."
 
 # Convert the Jupyter Notebook to Markdown 

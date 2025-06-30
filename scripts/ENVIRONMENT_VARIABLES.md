@@ -7,9 +7,12 @@ This file was generated with the script [appendEnvironmentVariables.sh](./append
 | Environment Variable Name           | Default                             | Description                                            |
 | ----------------------------------- | ----------------------------------- | ------------------------------------------------------ |
 JUPYTER_NOTEBOOK_DIRECTORY            | ${SCRIPTS_DIR}/../jupyter           | Repository directory containing the Jupyter Notebooks |
-CONDA_ENVIRONMENT_FILE                | ${JUPYTER_NOTEBOOK_DIRECTORY}/environment.yml | Conda (package manager for Python) environment file path |
-CODEGRAPH_CONDA_ENVIRONMENT           | codegraph                           | Name of the conda environment to use for code graph analysis |
-PREPARE_CONDA_ENVIRONMENT             | true                                | Wether to prepare a Python environment with Conda if needed (default, "true") or use an already prepared Conda environment ("false") |
+CONDA_ENVIRONMENT_FILE                | ${JUPYTER_NOTEBOOK_DIRECTORY}/environment.yml | **DEPRECATED**: Conda (package manager for Python) environment file path |
+CODEGRAPH_CONDA_ENVIRONMENT           | codegraph                           | **DEPRECATED**: Name of the conda environment to use for code graph analysis |
+PREPARE_CONDA_ENVIRONMENT             | true                                | **DEPRECATED**: Whether to prepare a Python environment with Conda if needed |
+REQUIREMENTS_FILE                     | ${PROJECT_ROOT}/requirements.txt    | Requirements file path for pip (Python package installer) |
+VENV_NAME                             | .venv                               | Name of the virtual environment directory |
+PREPARE_PYTHON_ENVIRONMENT            | true                                | Whether to prepare a Python environment with venv if needed (default, "true") or use an already prepared environment ("false") |
 REPORTS_SCRIPTS_DIRECTORY             | reports                             | Working directory containing the generated reports |
 REPORT_COMPILATIONS_SCRIPTS_DIRECTORY | compilations                        | Repository directory that contains scripts that execute selected report generation scripts |
 SETTINGS_PROFILE_SCRIPTS_DIRECTORY    | profiles                            | Repository directory that contains scripts containing settings |

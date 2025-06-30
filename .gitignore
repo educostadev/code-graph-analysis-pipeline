@@ -95,3 +95,11 @@ coverage/
 
 # Python environments
 .conda
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+tools/
